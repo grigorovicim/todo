@@ -57,9 +57,11 @@ class RequestsManager: NSObject {
     }
     
     static func updateProject(_ project: Project) {
+        guard let id = project.id else { return }
         let projectDict = self.mapProjectToDictionary(project)
-        let params = ["project" : projectDict]
+        let params = ["project" : projectDict, "id" : id] as [String : Any]
         
+      
         Alamofire.request(updatePorjectUrl, method: .post, parameters: params, encoding: JSONEncoding.default, headers: nil)
             .responseJSON { (response) in
                 switch response.result {
@@ -75,10 +77,6 @@ class RequestsManager: NSObject {
         var projectDictionary = [String : Any]()
         projectDictionary[Project.CodingKeys.name] = project.name
         projectDictionary[Project.CodingKeys.priority] = project.priority.priority
-        
-        if let id = project.id {
-            projectDictionary[Project.CodingKeys.id] = id
-        }
         
         var tasks = Array<Dictionary<String, Any>>()
         
