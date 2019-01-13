@@ -2,7 +2,7 @@
 //  DatePickerViewController.swift
 //  todoapp
 //
-//  Created by Florin Ionita on 11/4/18.
+//  Created by Monica Grigorovici on 11/4/18.
 //  Copyright © 2018 MonicaProjects. All rights reserved.
 //
 
@@ -71,5 +71,14 @@ extension Date {
         let dateString = dateFormatter.string(from: self)
         
         return dateString
+    }
+    
+    static func from(string: String) -> Date {
+        let dateFormatter = DateFormatter.init()
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+        
+        let date = dateFormatter.date(from: string)
+        
+        return date!
     }
 }

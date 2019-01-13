@@ -2,7 +2,7 @@
 //  ProjectsTableViewController.swift
 //  todoapp
 //
-//  Created by Florin Ionita on 11/3/18.
+//  Created by Monica Grigorovici on 11/3/18.
 //  Copyright © 2018 MonicaProjects. All rights reserved.
 //
 
@@ -33,6 +33,10 @@ class ProjectsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        mainApplication.projectsUpdateClousure = {
+            self.tableView.reloadData()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

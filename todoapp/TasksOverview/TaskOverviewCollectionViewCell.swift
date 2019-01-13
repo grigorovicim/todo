@@ -2,7 +2,7 @@
 //  TaskOverviewCollectionViewCell.swift
 //  todoapp
 //
-//  Created by Florin Ionita on 11/5/18.
+//  Created by Monica Grigorovici on 11/5/18.
 //  Copyright © 2018 MonicaProjects. All rights reserved.
 //
 

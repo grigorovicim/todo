@@ -6,10 +6,6 @@ target 'todoapp' do
   use_frameworks!
 
   # Pods for todoapp
-  pod 'Firebase/Core'
-  pod 'Firebase/Database'
-  pod 'Firebase/Auth'
-  pod 'FBSDKLoginKit'
-  pod 'ObjectMapper', '~> 3.4'
+  pod 'Alamofire'
 
 end

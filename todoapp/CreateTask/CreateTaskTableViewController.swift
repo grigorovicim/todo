@@ -2,7 +2,7 @@
 //  CreateTaskTableViewController.swift
 //  todoapp
 //
-//  Created by Florin Ionita on 11/3/18.
+//  Created by Monica Grigorovici on 11/3/18.
 //  Copyright © 2018 MonicaProjects. All rights reserved.
 //
 
@@ -237,6 +237,8 @@ class CreateTaskTableViewController: UITableViewController {
             task.project = self.project!
             task.priority = self.priority!
             task.date = self.date!
+            
+            self.project!.persistLocallyProjects()
         } else {
             let task = Task.init(details: self.taskDescription, project: self.project!, priority: self.priority!, date: self.date!)
             

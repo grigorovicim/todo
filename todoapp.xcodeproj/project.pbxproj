@@ -18,10 +18,11 @@
 		4C4435F0218E216B002E26C9 /* ProjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4435EF218E216B002E26C9 /* ProjectTableViewCell.swift */; };
 		4C4435F5218E394C002E26C9 /* TasksTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4435F4218E394C002E26C9 /* TasksTableViewController.swift */; };
 		4C4435F7218E39A3002E26C9 /* CreateTaskTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4435F6218E39A3002E26C9 /* CreateTaskTableViewController.swift */; };
+		4C49757521EA32BC003BBBC0 /* PriorityCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C49757421EA32BC003BBBC0 /* PriorityCase.swift */; };
+		4C646B3A21EA4AAC00170E6C /* RequestsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C646B3921EA4AAC00170E6C /* RequestsManager.swift */; };
 		4C679B09218E5A6F00995A59 /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C679B08218E5A6F00995A59 /* DatePickerViewController.swift */; };
 		4C6D46F4218FA7EE00D1DF1A /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6D46F3218FA7EE00D1DF1A /* Task.swift */; };
 		4C6D46F6218FA86300D1DF1A /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6D46F5218FA86300D1DF1A /* Project.swift */; };
-		4C6D46F8218FB0C600D1DF1A /* PriorityCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6D46F7218FB0C600D1DF1A /* PriorityCase.swift */; };
 		4C6D46FA218FB9A700D1DF1A /* TaskOverviewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6D46F9218FB9A700D1DF1A /* TaskOverviewCollectionViewCell.swift */; };
 		4CEC1117218E4B9D008C9DAD /* OptionSelectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CEC1116218E4B9D008C9DAD /* OptionSelectionTableViewController.swift */; };
 		5C35120C21B41C9D0043FD0F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5C35120B21B41C9C0043FD0F /* GoogleService-Info.plist */; };
@@ -45,10 +46,11 @@
 		4C4435EF218E216B002E26C9 /* ProjectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectTableViewCell.swift; sourceTree = "<group>"; };
 		4C4435F4218E394C002E26C9 /* TasksTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksTableViewController.swift; sourceTree = "<group>"; };
 		4C4435F6218E39A3002E26C9 /* CreateTaskTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTaskTableViewController.swift; sourceTree = "<group>"; };
+		4C49757421EA32BC003BBBC0 /* PriorityCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriorityCase.swift; sourceTree = "<group>"; };
+		4C646B3921EA4AAC00170E6C /* RequestsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestsManager.swift; sourceTree = "<group>"; };
 		4C679B08218E5A6F00995A59 /* DatePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
 		4C6D46F3218FA7EE00D1DF1A /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		4C6D46F5218FA86300D1DF1A /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
-		4C6D46F7218FB0C600D1DF1A /* PriorityCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriorityCase.swift; sourceTree = "<group>"; };
 		4C6D46F9218FB9A700D1DF1A /* TaskOverviewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskOverviewCollectionViewCell.swift; sourceTree = "<group>"; };
 		4CEC1116218E4B9D008C9DAD /* OptionSelectionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionSelectionTableViewController.swift; sourceTree = "<group>"; };
 		5C35120B21B41C9C0043FD0F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -148,7 +150,8 @@
 			children = (
 				4C6D46F3218FA7EE00D1DF1A /* Task.swift */,
 				4C6D46F5218FA86300D1DF1A /* Project.swift */,
-				4C6D46F7218FB0C600D1DF1A /* PriorityCase.swift */,
+				4C49757421EA32BC003BBBC0 /* PriorityCase.swift */,
+				4C646B3921EA4AAC00170E6C /* RequestsManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -263,31 +266,13 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-todoapp/Pods-todoapp-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
-				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
-				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
-				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
-				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -307,8 +292,9 @@
 				4C4435F5218E394C002E26C9 /* TasksTableViewController.swift in Sources */,
 				4C4435D9218E18A4002E26C9 /* AppDelegate.swift in Sources */,
 				4C6D46F4218FA7EE00D1DF1A /* Task.swift in Sources */,
-				4C6D46F8218FB0C600D1DF1A /* PriorityCase.swift in Sources */,
 				5C35120E21B422150043FD0F /* AuthenticationViewController.swift in Sources */,
+				4C646B3A21EA4AAC00170E6C /* RequestsManager.swift in Sources */,
+				4C49757521EA32BC003BBBC0 /* PriorityCase.swift in Sources */,
 				4C00A894218E3CF600D596AA /* TaskDescriptionTableViewCell.swift in Sources */,
 				4C4435EE218E1F55002E26C9 /* ProjectsTableViewController.swift in Sources */,
 				4C679B09218E5A6F00995A59 /* DatePickerViewController.swift in Sources */,

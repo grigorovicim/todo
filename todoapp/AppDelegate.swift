@@ -2,14 +2,13 @@
 //  AppDelegate.swift
 //  todoapp
 //
-//  Created by Florin Ionita on 11/3/18.
+//  Created by Monica Grigorovici on 11/3/18.
 //  Copyright © 2018 MonicaProjects. All rights reserved.
 //
 
 import UIKit
 import CoreData
-import Firebase
-import FirebaseDatabase
+import Alamofire
 
 enum UserDefaultsKeys: String {
     case projects
@@ -21,40 +20,84 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     public var window: UIWindow?
     
     public var projects: Array<Project> = [
-    ]
-    
-    public var user: User? {
+        ] {
         didSet {
-            self.firebaseDatabase.child("users/\(self.user!.uid)/username").setValue(self.user!.displayName)
+            guard let updateClousure = self.projectsUpdateClousure else {
+                return
+            }
+            
+            updateClousure()
         }
     }
     
-    public var firebaseDatabase: DatabaseReference!
+    public var projectsUpdateClousure: (() -> Void)?
+    public var hasInternetConnection: Bool {
+        get {
+            return (NetworkReachabilityManager.init()?.isReachable)!
+        }
+    }
+//    public var user: User? {
+//        didSet {
+//            self.firebaseDatabase.child("users/\(self.user!.uid)/username").setValue(self.user!.displayName)
+//        }
+//    }
+//
+//    public var firebaseDatabase: DatabaseReference!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         mainApplication = self
         
-        FirebaseApp.configure()
-        firebaseDatabase = Database.database().reference()
-        
-        let encodedProjects = UserDefaults.standard.value(forKey: UserDefaultsKeys.projects.rawValue) as! Data
-        let decodedProjects = NSKeyedUnarchiver.unarchiveObject(with: encodedProjects) as! Array<Project>
-        
-        self.projects = decodedProjects
-        
-        if decodedProjects.count > 0, let _ = self.user {
-            self.persistProjectsToDatabase(decodedProjects)
+//        FirebaseApp.configure()
+//        firebaseDatabase = Database.database().reference()
+
+        if let encodedProjects = UserDefaults.standard.value(forKey: UserDefaultsKeys.projects.rawValue) as? Data {
+            let decodedProjects = NSKeyedUnarchiver.unarchiveObject(with: encodedProjects) as! Array<Project>
+
+            self.projects = decodedProjects
+
+            if decodedProjects.count > 0 {
+                self.persistProjectsToDatabase(decodedProjects)
+            }
+        } else {
+//            self.projects = [
+//                Project.init(name: "Personal", priority: .high, tasks: [Task]()),
+//                Project.init(name: "Work", priority: .high, tasks: [Task]()),
+//                Project.init(name: "Travel", priority: .medium, tasks: [Task]()),
+//                Project.init(name: "Faculty", priority: .low, tasks: [Task]()),
+//            ]
+//
+//            self.projects.first?.tasks = [
+//                Task.init(details: "Buy a labrador", project: projects.first!, priority: .high, date: Date()),
+//                Task.init(details: "Workout.", project: projects.first!, priority: .high, date: Date()),
+//                Task.init(details: "Eat cheesecakes!", project: projects.first!, priority: .medium, date: Date()),
+//                Task.init(details: "Finish faculty.", project: projects.first!, priority: .low, date: Date()),
+//            ]
+            
+            self.loadProjectsFromDatabase()
         }
         
         return true
     }
     
     func persistProjectsToDatabase(_ projects: Array<Project>) {
-//        UserDefaults.standard.removeObject(forKey: UserDefaultsKeys.projects.rawValue)
+        guard self.hasInternetConnection == true else { return }
+        
+        UserDefaults.standard.removeObject(forKey: UserDefaultsKeys.projects.rawValue)
+        
+        for project in projects {
+            if let _ = project.id {
+                RequestsManager.updateProject(project)
+            } else {
+                RequestsManager.addProject(project)
+            }
+        }
     }
     
     func loadProjectsFromDatabase() {
+        RequestsManager.fetchProjects { (projects) in
+            self.projects = NSArray.init(array: projects) as! Array<Project>
+        }
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
@@ -107,6 +150,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
         })
+        
         return container
     }()
 
